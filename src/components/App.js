@@ -12,7 +12,6 @@ const App = () => {
   const onClear = () => {
     setInput('')
   }
-  };
 
   return (
    <div>
