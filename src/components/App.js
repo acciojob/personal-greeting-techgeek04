@@ -1,28 +1,27 @@
 import React, { useState } from "react";
+import './../styles/App.css';
 
 const App = () => {
-  const [n, setName] = useState('');
-  const [greeting, setGreeting] = useState('');
+  const [input, setInput] = useState('');
 
-  const submitButton = (e) => {
-    e.preventDefault();
-    if (n.trim()) {
-      setGreeting(`Hello, ${n}!`);
-    } else {
-      setGreeting('');
+  const onInput = (e) => {
+    const {value} = e.target;
+    setInput(value);
     }
+
+  const onClear = () => {
+    setInput('')
+  }
   };
 
   return (
-    <div>
-      {/* Do not remove the main div */}
-      <form onSubmit={submitButton}>
-        <label>Enter your name:</label>
-        <input type="text" value={n} onChange={(e) => setName(e.target.value)} />
-        <button type="submit">Submit</button>
-      </form>
-      <p>{greeting}</p>
-    </div>
+   <div>
+       {/* Do not remove the main div */} 
+   <p>Enter your name:</p>
+   <input value={input) onChange={onInput} />
+   {!!input.length&&<p>Hello {input}!</p>}
+   <button onClick={onClear}>Clear</button>
+  </div>
   );
 };
 
